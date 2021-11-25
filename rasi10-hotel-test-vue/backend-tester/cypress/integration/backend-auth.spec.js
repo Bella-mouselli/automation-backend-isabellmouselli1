@@ -24,7 +24,7 @@ describe('My test suite for backend', function(){
      
     
     })
-    it.only('test case 5 - edit client', function(){
+    it('test case 5 - edit client', function(){
         clientHelpers.editClient(cy)
      
     
