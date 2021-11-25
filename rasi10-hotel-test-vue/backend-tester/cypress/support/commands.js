@@ -26,6 +26,7 @@
 
 
 const LOGIN_URL = 'http://localhost:3000/api/login'
+const LOG_OUT_ENDPOINT='http://localhost:3000/api/logout'
 
 Cypress.Commands.add('authenticateSession', () => {
     const userCredentials = {
@@ -43,5 +44,24 @@ Cypress.Commands.add('authenticateSession', () => {
     }).then((response =>{
         expect(response.status).to.eq(200)
         Cypress.env({loginToken:response.body}) //Sparar token
+    }))
+})
+
+// Log out
+Cypress.Commands.add('endSession',() => {
+
+    const logoutPayload = {
+        "username":"tester01",
+        "token":JSON.stringify(Cypress.env().loginToken)}
+    cy.request({
+        method:'POST',
+        url:LOG_OUT_ENDPOINT,
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body:JSON.stringify(logoutPayload)
+    }).then((response =>{
+        // Assert logged out
+        expect(response.status).to.eq(200) // assert status code
     }))
 })
