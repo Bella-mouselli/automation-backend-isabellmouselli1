@@ -25,7 +25,7 @@ describe('My test suite for backend', function(){
      
     
     })
-    it.only('test case 5 - create and delete bill', function(){
+    it('test case 5 - create and delete bill', function(){
         taBortBill.createAndDeleteBill(cy)
      
     
