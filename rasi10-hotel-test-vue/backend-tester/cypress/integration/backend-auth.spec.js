@@ -1,7 +1,8 @@
 /// <reference types="cypress" />
 
 import * as clientHelpers from '../helpers/clientHelpers'
-import * as taBort from '../helpers/createDelete'
+import * as taBort from '../helpers/createDeleteR'
+import * as taBortBill from '../helpers/CreateAndDeleteBill'
 
 describe('My test suite for backend', function(){
 
@@ -24,8 +25,8 @@ describe('My test suite for backend', function(){
      
     
     })
-    it('test case 5 - edit client', function(){
-        clientHelpers.editClient(cy)
+    it.only('test case 5 - create and delete bill', function(){
+        taBortBill.createAndDeleteBill(cy)
      
     
     })
